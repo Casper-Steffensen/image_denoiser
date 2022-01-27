@@ -1,0 +1,7 @@
+#ignore things in the /data folder
+/data
+
+#ignore image formats:
+*.jpeg
+*.tiff
+*.png
