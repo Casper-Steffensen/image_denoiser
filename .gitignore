@@ -5,3 +5,6 @@
 *.jpeg
 *.tiff
 *.png
+
+#ignore things in outputs
+/outputs

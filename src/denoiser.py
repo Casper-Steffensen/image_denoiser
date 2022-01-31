@@ -1,13 +1,12 @@
 import numpy as np
 from PIL import Image
-import logging
 import os
-from queue import Queue
-from threading import Thread
-from time import time
+# from queue import Queue
+# from threading import Thread
+# from time import time
 
-#Two thresholds are defined (black and white) and pixels are changed
-#To either 100% white or relativly close to black
+# Two thresholds are defined (black and white) and pixels are changed
+# To either 100% white or relativly close to black
 
 def filter_threshold(img_array):
 	"""
@@ -18,31 +17,30 @@ def filter_threshold(img_array):
 	size = img_array.shape
 	for x in range(size[0]):
 		for y in range(size[1]):
-			if img_array[x,y] <= 50:
-				img_array[x,y] = 0
+			if img_array[x, y] <= 50:
+				img_array[x, y] = 0
 
-			elif img_array[x,y] >= 150:
-				img_array[x,y] = 255
+			elif img_array[x, y] >= 150:
+				img_array[x, y] = 255
 	print("Threshold filtering done")			
 	return img_array
 
 
 def closest_multiple(num_lines, p):
-	if(num_lines % p): #:= if(0) == if(False)
-		return x-(x%p)
+	if(num_lines % p):# := if(0) == if(False)
+		return x-(x%p) #num_lines?
 	else:
 		return num_lines
 
 
 def filter_threshold_pll(img_array, num_cores):
-
 	for x in range(size[0]):
 		for y in range(size[1]):
-			if img_array[x,y] <= 50:
-				img_array[x,y] = 0
+			if img_array[x, y] <= 50:
+				img_array[x, y] = 0
 
-			elif img_array[x,y] >= 150:
-				img_array[x,y] = 255
+			elif img_array[x, y] >= 150:
+				img_array[x, y] = 255
 
 	print("Threshold filtering done")			
 	return img_array
@@ -50,7 +48,6 @@ def filter_threshold_pll(img_array, num_cores):
 
 def remove_isolated_pixels(img_array):
 	size = img_array.shape
-
 	"""
 	loop where we define how fine we want the filtering
 	"""
@@ -138,4 +135,4 @@ two_by_one_pixels = remove_2x1_pixels(img_array_final)
 print("Done!")
 
 im = Image.fromarray(img_array)
-im.save("denoised.tiff")
+im.save("ouputs/denoised.tiff")
